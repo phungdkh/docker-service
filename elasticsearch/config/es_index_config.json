@@ -1,0 +1,20 @@
+{
+    "index_patterns": ["datahub"],
+    "settings" : {
+        "number_of_shards" : 1,
+        "index.mapping.ignore_malformed": true 
+    },
+    "mappings": {
+        "_doc": {
+            "properties": {
+                "Id": { 
+                    "type": "integer",
+                    "ignore_malformed": false 
+                },
+                "IsPublic": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

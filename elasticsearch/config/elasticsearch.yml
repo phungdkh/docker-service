@@ -1,0 +1,24 @@
+---
+## Default Elasticsearch configuration from elasticsearch-docker.
+## from https://github.com/elastic/elasticsearch-docker/blob/master/build/elasticsearch/elasticsearch.yml
+#
+cluster.name: "docker-cluster"
+network.host: 0.0.0.0
+http.port: 9200-9209
+transport.tcp.port: 9300-9309
+bootstrap.memory_lock: true
+
+# minimum_master_nodes need to be explicitly set when bound on a public IP
+# set to 1 to allow single node clusters
+# Details: https://github.com/elastic/elasticsearch/pull/17288
+discovery.zen.minimum_master_nodes: 1
+
+## Use single node discovery in order to disable production mode and avoid bootstrap checks
+## see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+#
+discovery.type: single-node
+
+# By default the low water mark threshold will stop the node from starting 
+# if your dev machine doesn't have at least 15% free. This is generally
+# less of a mission critical threshold when in Docker on a dev machine
+cluster.routing.allocation.disk.threshold_enabled: false
